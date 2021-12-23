@@ -1,2 +1,3 @@
-# MavenTemplate
-Template for making repo with customised pom.xml files
+# Revision for SDF Assessment
+
+Redo for reinforcing concepts based on instructor's model answer.
