@@ -1,0 +1,5 @@
+chewyt\Constants.class
+chewyt\Main.class
+chewyt\HttpClientConnection.class
+chewyt\HttpServer.class
+chewyt\HttpWriter.class
