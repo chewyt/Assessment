@@ -65,9 +65,9 @@ public class HttpClientConnection implements Runnable {
                     // check if it is an png image
                     if (resource.endsWith(".png")) {
                         writer.writeString("Content-Type: image/png");
-                        System.out.println("Image resource");
+                        // System.out.println("Image resource");
                     } else {
-                        System.out.println("HTML resource");
+                        // System.out.println("HTML resource");
                     }
                     writer.writeString();
 
@@ -81,7 +81,21 @@ public class HttpClientConnection implements Runnable {
                     System.out.println("404 error");
                     writer.writeString("HTTP/1.1 404 Not Found");
                     writer.writeString();
-                    writer.writeString("%s not found".formatted(resource));
+
+                    Optional<File> opt2 = getFile("/404.html", docRoot);
+                    if (opt2.isPresent()) {
+                        File f = opt2.get();
+                        FileInputStream fis = new FileInputStream(f);
+                        BufferedInputStream bis = new BufferedInputStream(fis);
+                        byte[] buffer = new byte[4096];
+                        int size = 0;
+                        while (-1 != (size = bis.read(buffer, 0, buffer.length))) {
+                            writer.writeBytes(buffer, 0, size);
+                        }
+                        bis.close();
+                    } else {
+                        writer.writeString("%s not found".formatted(resource));
+                    }
 
                 }
 

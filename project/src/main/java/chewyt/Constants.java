@@ -2,7 +2,7 @@ package chewyt;
 
 public class Constants {
 
-    public static final int DEFAULT_PORT = 1234;
+    public static final int DEFAULT_PORT = 3000;
     public static final String[] DEFAULT_DOCROOT = { "static" };
 
     // public static final String IMAGE_PNG = ".png";
